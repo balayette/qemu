@@ -44,6 +44,8 @@ static inline bool qemu_log_separate(void)
     return res;
 }
 
+#define CPU_LOG_INSTR_CNT (1 << 30)
+
 #define CPU_LOG_TB_OUT_ASM (1 << 0)
 #define CPU_LOG_TB_IN_ASM  (1 << 1)
 #define CPU_LOG_TB_OP      (1 << 2)

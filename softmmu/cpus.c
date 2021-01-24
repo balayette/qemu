@@ -538,6 +538,7 @@ void pause_all_vcpus(void)
 
     qemu_clock_enable(QEMU_CLOCK_VIRTUAL, false);
     CPU_FOREACH(cpu) {
+        qemu_log_mask(CPU_LOG_INSTR_CNT, "cpu exit icount %ld\n", cpu->icount);
         if (qemu_cpu_is_self(cpu)) {
             qemu_cpu_stop(cpu, true);
         } else {

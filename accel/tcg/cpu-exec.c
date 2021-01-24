@@ -169,6 +169,10 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
                            itb->cs_base, itb->pc, itb->flags,
                            lookup_symbol(itb->pc));
 
+    if (likely(qemu_loglevel_mask(CPU_LOG_INSTR_CNT) &&
+               qemu_log_in_addr_range(itb->pc)))
+      cpu->icount += itb->icount;
+
 #if defined(DEBUG_DISAS)
     if (qemu_loglevel_mask(CPU_LOG_TB_CPU)
         && qemu_log_in_addr_range(itb->pc)) {

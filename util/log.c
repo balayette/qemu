@@ -334,6 +334,8 @@ const QEMULogItem qemu_log_items[] = {
 #endif
     { LOG_STRACE, "strace",
       "log every user-mode syscall, its input, and its result" },
+    { CPU_LOG_INSTR_CNT | CPU_LOG_TB_NOCHAIN, "instrc",
+      "log count of executed instructions" },
     { 0, NULL, NULL },
 };
 
